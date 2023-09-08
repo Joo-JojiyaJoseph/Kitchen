@@ -1,4 +1,4 @@
-{{-- <x-guest-layout>
+<x-guest-layout>
     <!-- component -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
  <script>
@@ -50,4 +50,4 @@
          </div>
      </div>
  </div>
- </x-guest-layout> --}}
+ </x-guest-layout>

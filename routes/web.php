@@ -36,6 +36,6 @@ Route::get('login', function () {
 // require __DIR__.'/auth.php';
 
 
-// Route::get('login', [PageController::class, 'login'])->name('login');
+Route::post('login', [PageController::class, 'login'])->name('login');
 
 // Route::get('clienttest', [PageController::class, 'clienttest'])->name('clienttest');

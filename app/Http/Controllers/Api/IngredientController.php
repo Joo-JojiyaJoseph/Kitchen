@@ -24,6 +24,7 @@ class IngredientController extends Controller
             ], 500);
         }
     }
+    
     public function addingredient(Request $request)
     {
         try {
