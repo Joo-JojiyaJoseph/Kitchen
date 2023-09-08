@@ -34,7 +34,7 @@ class FoodController extends Controller
                 [
                     'food_name'=> 'required',
                     'food_ingredient'=> 'required',
-                    'food_quantity'=>'required',
+                    'f_ingredient_quantity'=>'required',
                 ]
             );
             if ($validateFood->fails()) {
@@ -48,7 +48,7 @@ class FoodController extends Controller
             $food = Food::create([
                 'food_name' => $request->food_name,
                 'food_ingredient' => $request->food_ingredient,
-                'food_quantity' => $request->food_quantity,
+                'f_ingredient_quantity' => $request->f_ingredient_quantity,
             ]);
 
             return response()->json([
@@ -72,7 +72,7 @@ class FoodController extends Controller
                 [
                     'food_name'=> 'required',
                     'food_ingredient'=> 'required',
-                    'food_quantity'=>'required',
+                    'f_ingredient_quantity'=>'required',
                 ]
             );
             if ($validateFood->fails()) {
@@ -87,7 +87,7 @@ class FoodController extends Controller
             $Food->update([
                 'food_name' => $request->food_name,
                 'food_ingredient' => $request->food_ingredient,
-                'food_quantity' => $request->food_quantity,
+                'f_ingredient_quantity' => $request->f_ingredient_quantity,
             ]);
 
             return response()->json([
@@ -125,7 +125,7 @@ class FoodController extends Controller
             $validatefood = Validator::make(
                 $request->all(),
                 [
-                    'food_quantity' => 'required',
+                    'f_ingredient_quantity' => 'required',
                 ]
             );
             if ($validatefood->fails()) {
@@ -137,10 +137,10 @@ class FoodController extends Controller
             }
 
             $food = Food::find($id);
-            $quantity = $food->food_quantity + $request->food_quantity;
+            $quantity = $food->f_ingredient_quantity + $request->f_ingredient_quantity;
 
             $food->update([
-                'food_quantity' => $quantity,
+                'f_ingredient_quantity' => $quantity,
             ]);
 
             return response()->json([

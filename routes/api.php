@@ -25,6 +25,18 @@ Route::delete('/DeleteFood', [FoodController::class, 'deletefood']);
 Route::post('/Add_Quantity_food', [FoodController::class, 'add_quantity_food']);
 
 
+// Order
+Route::post('/ViewOrder', [OrderController::class, 'vieworder']);
+Route::post('/AddOrder', [OrderController::class, 'addorder']);
+Route::post('/EditOrder', [OrderController::class, 'editorder']);
+Route::delete('/DeleteOrder', [OrderController::class, 'deleteorder']);
+
+// Customer
+Route::post('/ViewCustomer', [CustomerController::class, 'viewcustomer']);
+Route::post('/AddCustomer', [CustomerController::class, 'addcustomer']);
+Route::post('/EditCustomer', [CustomerController::class, 'editcustomer']);
+Route::delete('/DeleteCustomer', [CustomerController::class, 'deletecustomer']);
+
 Route::group(['middleware' => ['auth:sanctum','auth.admin']], function () {
     // Your admin-only routes go here
     Route::post('/Apiregister', [AuthController::class, 'createUser']);
