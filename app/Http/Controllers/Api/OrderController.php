@@ -66,43 +66,43 @@ class OrderController extends Controller
             $order_foods = explode(',',$order_food );
             $i=0;
 
-            // foreach ($order_foods as $order_foodd)
-            // {
-            // if ($order_foodd !="")
-            // {
+            foreach ($order_foods as $order_foodd)
+            {
+            if ($order_foodd !="")
+            {
 
-            // $findFood = Food::find($order_foodd);
-            // $findIngredient=$findFood->food_ingredient;
-            // $find_f_ingredient_quantity=$findFood->f_ingredient_quantity;
-            // $f_order_ingredient_quantitys=$order_quantitys[$i]*$find_f_ingredient_quantity;
+            $findFood = Food::find($order_foodd);
+            $findIngredient=$findFood->food_ingredient;
+            $find_f_ingredient_quantity=$findFood->f_ingredient_quantity;
+            $f_order_ingredient_quantitys=$order_quantitys[$i]*$find_f_ingredient_quantity;
 
-            // $order_Ingredient = Ingredient::find( $findFood->food_ingredient);
-            // $order_Ingredient_quantity =  $order_Ingredient->ingredient_quantity - $f_order_ingredient_quantitys;
+            $order_Ingredient = Ingredient::find( $findFood->food_ingredient);
+            $order_Ingredient_quantity =  $order_Ingredient->ingredient_quantity - $f_order_ingredient_quantitys;
 
-            // $order_Ingredient->update([
-            //     'ingredient_quantity_order' => $order_Ingredient_quantity,
-            // ]);
+            $order_Ingredient->update([
+                'ingredient_quantity' => $order_Ingredient_quantity,
+            ]);
 
-            // }
-            // $i++;
-            // }
+            }
+            $i++;
+            }
 
 
 
 
             $order = order::create([
                 'customer_id' => $customer->id,
-                'food' => $order_foods,
-                'quantity' => $order_quantitys,
+                'food_item' => $order_food,
+                'quantity' => $order_quantity,
                 'delivery_date' => $request->delivery_date,
                 'delivery_time' => $request->delivery_time,
-                'order_date' => $request->order_date,
-                'order_time' => $request->order_time,
+                'ordered_date' => $request->order_date,
+                'ordered_time' => $request->order_time,
             ]);
 
             return response()->json([
                 'status' => true,
-                'message' => 'order ' . $order->order_name . ' Created Successfully',
+                'message' => 'order ' . $order->order_name . ' Created Successfully',$order_Ingredient_quantity
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([

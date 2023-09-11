@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('food_name');
             $table->string('food_ingredient');
-            $table->string('food_quantity')->nullable();
+            $table->string('f_ingredient_quantity')->nullable();
             $table->string('food_status')->nullable();
             $table->timestamps();
         });

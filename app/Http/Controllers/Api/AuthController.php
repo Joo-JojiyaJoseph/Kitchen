@@ -18,6 +18,7 @@ class AuthController extends Controller
      */
     public function createUser(Request $request)
     {
+
         try {
             //Validated
             $validateUser = Validator::make(
@@ -66,6 +67,7 @@ class AuthController extends Controller
      */
     public function loginUser(Request $request)
     {
+        set_time_limit(300);
         try {
             $validateUser = Validator::make(
                 $request->all(),
