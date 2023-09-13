@@ -10,9 +10,18 @@ module.exports = {
 
     theme: {
         extend: {
+
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'dark-blue' : '#001861',
+                'light-blue' : '#bfcfff',
+                'light-gray' : '#9fabd0'
+            },
+            screens: {
+                '3xl': '1600px',
+              },
         },
     },
 

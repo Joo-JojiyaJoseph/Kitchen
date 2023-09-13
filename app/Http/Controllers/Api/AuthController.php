@@ -67,7 +67,7 @@ class AuthController extends Controller
      */
     public function loginUser(Request $request)
     {
-        set_time_limit(300);
+
         try {
             $validateUser = Validator::make(
                 $request->all(),
@@ -94,9 +94,9 @@ class AuthController extends Controller
             }
 
             $user = User::where('email', $request->email)->first();
-
             return response()->json([
                 'status' => true,
+                'role' => $user->u_type,
                 'message' => 'User ' . $user->name . ' Logged In Successfully',
                 'token' => $user->createToken("API TOKEN")->plainTextToken
             ], 200);
@@ -110,7 +110,8 @@ class AuthController extends Controller
 
     public function logoutUser(Request $request)
     {
+
         auth()->logout();
-        return response()->json(['message' => 'Logged out successfully']);
+         return response()->json(['message' => 'Logged out successfully']);
     }
 }

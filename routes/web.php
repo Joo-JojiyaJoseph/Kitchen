@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/fresh-migrate', [PageController::class, 'freshMigrate']);
+
 Route::get('/', function () {
     return view('login');
 });
@@ -37,5 +39,12 @@ Route::get('login', function () {
 
 
 Route::post('login', [PageController::class, 'login'])->name('login');
+// Route::POST('logout', [PageController::class, 'logout'])->name('logout');
 
-// Route::get('clienttest', [PageController::class, 'clienttest'])->name('clienttest');
+
+    Route::get('/Home', [PageController::class, 'adminhome'])->name('admin.home');
+
+    Route::get('/Ingredient', [PageController::class, 'adminingredient'])->name('admin.ingredient');
+
+
+    Route::post('/Add_Ingredient', [PageController::class, 'admin_add_ingredient'])->name('admin.add_ingredient');

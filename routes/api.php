@@ -8,8 +8,8 @@ use App\Http\Controllers\Api\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 Route::post('/Apilogin', [AuthController::class, 'loginUser']);
+Route::group(['middleware' => ['auth:sanctum','auth.admin']], function () {
 Route::post('/Apilogout', [AuthController::class, 'logoutUser']);
 
 // ingredients
@@ -39,10 +39,10 @@ Route::post('/AddCustomer', [CustomerController::class, 'addcustomer']);
 Route::post('/EditCustomer', [CustomerController::class, 'editcustomer']);
 Route::delete('/DeleteCustomer', [CustomerController::class, 'deletecustomer']);
 
-Route::group(['middleware' => ['auth:sanctum','auth.admin']], function () {
-    // Your admin-only routes go here
-    Route::post('/Apiregister', [AuthController::class, 'createUser']);
+ Route::post('/Apiregister', [AuthController::class, 'createUser']);
 });
+
+
 
 Route::group(['middleware' => ['auth:sanctum','auth.kitchen']], function () {
     // Your kitchen-only routes go here
