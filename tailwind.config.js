@@ -7,6 +7,11 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
+    plugins: [
+        
+        require('@tailwindcss/forms')
+        // Other plugins...
+      ],
 
     theme: {
         extend: {
@@ -25,5 +30,5 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+
 };

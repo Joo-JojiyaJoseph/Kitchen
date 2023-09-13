@@ -1,8 +1,7 @@
 <x-app-layout>
     <section>
 
-     @livewire('ingredientview')
+     @livewire('posmenu')
 
-       
     </section>
 </x-app-layout>

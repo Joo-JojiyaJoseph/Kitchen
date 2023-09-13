@@ -43,8 +43,9 @@ Route::post('login', [PageController::class, 'login'])->name('login');
 
 
     Route::get('/Home', [PageController::class, 'adminhome'])->name('admin.home');
-
     Route::get('/Ingredient', [PageController::class, 'adminingredient'])->name('admin.ingredient');
-
-
     Route::post('/Add_Ingredient', [PageController::class, 'admin_add_ingredient'])->name('admin.add_ingredient');
+
+    
+
+    Route::get('/Menu', [PageController::class, 'pos_menu'])->name('pos.menu');

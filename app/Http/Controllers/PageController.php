@@ -95,11 +95,16 @@ class PageController extends Controller
             'Authorization' => 'Bearer' . session()->get('token.access_token')
         ])->post('http://test.webfolks.in/api/AddIngredient', [
             'ingredient_name'=>$ingredient_name,
-            'ingredient_quantity'=>100,
+            'ingredient_quantity'=>$ingredient_quantity,
         ]);
         $result = json_decode((string)$response->getBody(), true);
-        dd($result );
-        return view('admin.ingredient');
+        return redirect()->route('admin.ingredient')->with('status',"Added Sucessfully");
+
+    }
+
+    public function pos_menu()
+    {
+        return view('pos.menu');
 
     }
 }
