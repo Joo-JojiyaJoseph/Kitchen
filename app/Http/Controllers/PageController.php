@@ -63,7 +63,7 @@ class PageController extends Controller
     {
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer' . session()->get('token.access_token')
+            'Authorization' => 'Bearer ' . session()->get('token.access_token')
         ])->post('http://test.webfolks.in/api/Apilogout', [
 
         ]);
@@ -74,12 +74,13 @@ class PageController extends Controller
     public function adminingredient()
     {
         $response = Http::withHeaders([
-            'Authorization' => Session::get('token'),
+            'Authorization' =>'Bearer 1|tDr21554BDOZowlHOxkMV7OuXmiJ7je1mgwmDPCAeb59f847',
         ])->get('http://test.webfolks.in/api/ViewIngredient');
 
     if ($response->successful()) {
         $data = $response->json();
-        $ingredients=$data['data'];
+        //$ingredients=$data['data'];
+        dd($data ,Session::get('token'));
         return view('admin.ingredient',compact('ingredients'));
     } else {
         abort($response->status(), 'Failed to retrieve data from API');
